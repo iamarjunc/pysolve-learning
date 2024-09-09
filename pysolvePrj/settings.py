@@ -115,11 +115,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATICFILES_DIRS = [
-    'pysolvePrj/static',
-]
+# settings.py
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+# This should match the location of your static files in the build output
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile_build', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -27,23 +27,5 @@
       "src": "/(.*)",
       "dest": "pysolvePrj/wsgi.py"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/css/(.*)",
-      "destination": "/static/css/$1"
-    },
-    {
-      "source": "/js/(.*)",
-      "destination": "/static/js/$1"
-    },
-    {
-      "source": "/images/(.*)",
-      "destination": "/static/images/$1"
-    },
-    {
-      "source": "/fonts/(.*)",
-      "destination": "/static/fonts/$1"
-    }
   ]
 }
