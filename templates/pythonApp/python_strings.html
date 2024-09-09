@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Strings
+{% endblock %}
+
+{% block content %}
+        <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+
+        <h1 class="display-4 text-primary">Python Strings</h1>
+        <p class="lead">Strings in Python are used to store text data. They are defined by enclosing characters in quotes.</p>
+        </div>
+        <div class="mt-4">
+            <h3>String Basics</h3>
+            <pre class="code-block"><code class="language-python">greeting = "Hello, World!"<br/><br/># String with single quotes<br/>message = 'Python is awesome!'</code>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </pre>
+        </div>
+
+        <div class="mt-4">
+            <h3>String Concatenation</h3>
+            <p>Strings can be concatenated using the <code>+</code> operator:</p>
+            <pre class="code-block"><code class="language-python">first_name = "John"<br/>last_name = "Doe"<br/><br/>full_name = first_name + " " + last_name<br/>print(full_name)  # Output: John Doe</code>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </pre>
+        </div>
+
+        <div class="mt-4">
+            <h3>String Slicing</h3>
+            <p>You can access parts of a string using slicing:</p>
+            <pre class="code-block"><code class="language-python">text = "Hello, World!"<br/>print(text[0:5])   # Output: Hello<br/>print(text[7:12])  # Output: World</code>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </pre>
+        </div>
+
+        <div class="mt-4">
+            <h3>Common String Methods</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>lower():</strong> Converts all characters to lowercase.
+                    <pre class="code-block"><code class="language-python">text = "Hello, World!"<br/>print(text.lower())  # Output: hello, world!</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>upper():</strong> Converts all characters to uppercase.
+                    <pre class="code-block"><code class="language-python">text = "Hello, World!"<br/>print(text.upper())  # Output: HELLO, WORLD!</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>strip():</strong> Removes leading and trailing whitespace.
+                    <pre class="code-block"><code class="language-python">text = "  Hello, World!  "<br/>print(text.strip())  # Output: Hello, World!</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>replace():</strong> Replaces a substring with another string.
+                    <pre class="code-block"><code class="language-python">text = "Hello, World!"<br/>print(text.replace("World", "Python"))  # Output: Hello, Python!</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>split():</strong> Splits a string into a list of substrings.
+                    <pre class="code-block"><code class="language-python">text = "Hello, World!"<br/>words = text.split(", ")<br/>print(words)  # Output: ['Hello', 'World!']</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="d-flex justify-content-between">
+            <div class="mt-4">
+                <a href="{% url 'python_typecast' %}" class="btn btn-primary">Previous Page: Type Casting</a>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'python_boolean' %}" class="btn btn-primary">Next Page: Boolean</a>
+            </div>
+        </div>
+{% endblock %}
+

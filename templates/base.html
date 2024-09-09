@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Python Tutorials{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .hero {
+        background: linear-gradient(to right, #2a2a72, #009ffd);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        border-radius: 8px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        background-color: #ff4081;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    
+    .cta-button:hover {
+        background-color: #ff79a8;
+    }
+    
+    .important-topics {
+        padding: 40px 20px;
+        background-color: #f9f9f9;
+    }
+    
+    .important-topics h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+    
+    .topics-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .topic-box {
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .topic-box a {
+        text-decoration: none;
+        color: #ffff;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    
+    .topic-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);        
+        background-color: #ffffff;
+    }
+    
+    .topic-box.active {
+        border: 2px solid #009ffd;
+        background: #e3f2fd;
+    }
+    
+    .topic-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(32 69 146);
+        border-radius: 10px;
+        transform: scale(1.5);
+        transition: transform 0.3s;
+        z-index: 0;
+    }
+    
+    .topic-box:hover::before {
+        transform: scale(1);
+    }
+    
+    .topic-box a {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .get-started {
+        background-color: #2a2a72;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    .get-started h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .get-started p {
+        font-size: 1.2rem;
+    }
+    
+    .get-started a {
+        color: #ff4081;
+        text-decoration: underline;
+    }
+    
+        .navbar {
+            position: fixed; /* Fixes the navbar to the top of the viewport */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            z-index: 2000; /* Ensure it stays on top */
+            background-color: #007bff; /* Background color for better visibility */
+            font-family: 'Montserrat', sans-serif; /* Font for navbar */
+          }
+          
+          .navbar-brand {
+            font-weight: 700;
+          }
+          
+          /* Sidebar Styles */
+          .sidebar {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            height: calc(100% - 56px);
+            width: 250px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
+            padding: 15px;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow: auto;
+            font-family: 'Roboto', sans-serif;
+            transition: transform 0.3s ease;
+          }
+          .sidebar .box.active {
+            background-color: #052241;
+            color: #fff;
+            border-color: #052241;
+          }
+          a {
+            color: #0c437c;
+            text-decoration: none;
+            background-color: transparent;
+          }
+          .sidebar .box.active a {
+            color: #fff; /* Active link color */
+            text-decoration: none;
+          }
+          .btn-primary {
+            color: #fff;
+            background-color: #09315b;
+            border-color: #007bff;
+          }
+          .sidebar h4 {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+          }
+          
+          .sidebar .box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            font-weight: 400;
+          }
+          
+          .sidebar .box.active {
+            background-color: #09315b;
+            color: #fff;
+            border-color: #052241;
+          }
+          .bg-primary {
+            background-color: #09315b !important;
+          }
+          .sidebar .box a:hover {
+            text-decoration: underline;
+          }
+          
+          /* Content Styles */
+          .content {
+            margin-left: 250px; /* Space for the sidebar */
+            margin-top: 56px; /* Space for the fixed navbar */
+            padding: 15px; /* Optional: Add some padding */
+            position: relative;
+            z-index: 1; /* Ensure content is below the sidebar */
+            font-family: 'Roboto', sans-serif; /* Font for content */
+          }
+          
+          /* Custom Button Styles */
+          .btn-custom {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+          }
+          
+          .btn-custom:hover {
+            background: linear-gradient(90deg, #0056b3, #003d7a);
+            transform: translateY(-2px);
+          }
+          
+          .btn-custom:active {
+            transform: translateY(1px);
+          }
+          .text-primary {
+            color: #013266 !important;
+          }
+          /* Code Block Styling */
+          pre {
+          
+            background-color: #052241;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', Courier, monospace;
+          }
+          pre code {
+            font-size: inherit;
+            color: WHITE;
+            word-break: normal;
+          }
+          
+          code {
+            font-size: 16px;
+          }
+          
+          /* Copy Button Styling */
+          button.copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #117829;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+          }
+          
+          button.copy-btn:hover {
+            background-color: #218838;
+          }
+          
+          button.copy-btn:active {
+            transform: scale(0.98);
+          }
+          
+          /* Footer Styles */
+          .footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #777;
+            font-family: 'Roboto', sans-serif; /* Font for footer */
+          }
+          
+          /* Mobile responsiveness */
+          
+          @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                width: 250px;
+                height: 100vh;
+                top: 56px;
+                left: 0;
+                transform: translateX(-100%);
+            }
+          }
+          @media (max-width: 767.98px) {
+            .navbar {
+                position: static; /* Remove fixed positioning */
+            }
+          
+            /* .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                box-shadow: none;
+            } */
+          
+            .content {
+                margin-left: 0; /* Remove left margin */
+                padding: 15px;
+            }
+          }
+          @media (max-width: 768px) {
+            .sidebar.show {
+                transform: translateX(0);
+            }
+          }
+          /* Tablet responsiveness */
+          @media (max-width: 991.98px) and (min-width: 768px) {
+            .sidebar {
+                width: 200px; /* Adjust sidebar width */
+                padding: 10px;
+            }
+          
+            .content {
+                margin-left: 200px; /* Adjust content margin */
+            }
+          }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{% url "home" %}">PySolve</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            Stack
+        </button>
+        <button class="btn btn-light d-lg-none" id="sidebarToggle" aria-label="Toggle Sidebar">
+            Topics
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {% if active_nav == 'python' %}active{% endif %}">
+                    <a class="nav-link" href="{% url "py_home" %}">Python</a>
+                </li>
+                <li class="nav-item {% if section == 'django' %}active{% endif %}">
+                    <a class="nav-link" href="#">Django</a>
+                </li>
+                <li class="nav-item {% if section == 'ml' %}active{% endif %}">
+                    <a class="nav-link" href="#">Machine Learning</a>
+                </li>
+                <li class="nav-item {% if section == 'contact' %}active{% endif %}">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+    {% include 'sidebar_python.html' %}
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        {% block content %}
+        <!-- Main content will be provided by child templates -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 PySolve. All rights reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+        function copyCode(btn) {
+            const codeBlock = btn.previousElementSibling;
+            const range = document.createRange();
+            range.selectNode(codeBlock);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            try {
+                document.execCommand('copy');
+                btn.innerText = 'Copied!';
+                setTimeout(() => {
+                    btn.innerText = 'Copy';
+                }, 2000);
+            } catch (err) {
+                alert('Failed to copy text: ' + err);
+            }
+            window.getSelection().removeAllRanges();
+        }
+    </script>
+</body>
+</html>

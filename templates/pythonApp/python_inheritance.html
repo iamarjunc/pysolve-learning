@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Inheritance
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+    <h1 class="display-4 text-primary">Python Inheritance</h1>
+    <p class="lead">Inheritance is a fundamental concept in object-oriented programming (OOP) that allows one class (the child or subclass) to inherit attributes and methods from another class (the parent or superclass). This mechanism promotes code reusability, reduces redundancy, and establishes a natural hierarchy among classes. By using inheritance, you can create a new class based on an existing class, extending its functionality and making it more specific to your needs.</p>
+
+    <div class="mt-4">
+        <h3>Basics of Inheritance</h3>
+        <p>Inheritance allows a new class to acquire attributes and methods from an existing class. This helps in creating a class hierarchy where the new class (subclass) can build upon and extend the behavior of the existing class (superclass). Inheritance supports code reuse and can make your code more modular and maintainable.</p>
+        <p>In Python, inheritance is defined by specifying the parent class in parentheses after the subclass name. The subclass inherits all methods and attributes of the parent class, and it can also override or extend these methods to provide more specific functionality.</p>
+        <pre>
+            <code>
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+print(dog.speak())  # Output: Buddy says Woof!
+print(cat.speak())  # Output: Whiskers says Meow!
+            </code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li><strong>Animal Class:</strong> This is the base or parent class. It contains an `__init__` method to initialize the `name` attribute and a `speak` method that is meant to be overridden by subclasses. The `speak` method raises a `NotImplementedError`, indicating that it is an abstract method that should be implemented by any subclass.</li>
+            <li><strong>Dog Class:</strong> This is a subclass of `Animal`. It inherits the `name` attribute and `__init__` method from `Animal` but provides its own implementation of the `speak` method. When called, this method returns a message indicating that the dog says "Woof!".</li>
+            <li><strong>Cat Class:</strong> Another subclass of `Animal`. Similar to `Dog`, it inherits the `name` attribute and `__init__` method from `Animal` and implements its own version of the `speak` method, which returns a message indicating that the cat says "Meow!".</li>
+        </ul>
+        <p>When creating instances of `Dog` and `Cat` and calling their `speak` methods, the output is specific to each class due to the overridden methods. This demonstrates how inheritance allows subclasses to provide their own behavior while still leveraging the functionality of the parent class.</p>
+    </div>
+
+    <h3>Types of Inheritance</h3>
+    <p>Python supports several types of inheritance:</p>
+
+    <h4>Single Inheritance</h4>
+    <pre>
+        <code>
+class Parent:
+    pass
+
+class Child(Parent):
+    pass
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> Single inheritance involves a single parent class (`Parent`) and a single child class (`Child`). The `Child` class inherits from the `Parent` class, gaining its attributes and methods. This is the simplest form of inheritance.</p>
+
+    <h4>Multiple Inheritance</h4>
+    <pre>
+        <code>
+class A:
+    def method_a(self):
+        print("Method A")
+
+class B:
+    def method_b(self):
+        print("Method B")
+
+class C(A, B):
+    pass
+
+obj = C()
+obj.method_a()  # Output: Method A
+obj.method_b()  # Output: Method B
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> Multiple inheritance allows a class (`C`) to inherit from more than one parent class (`A` and `B`). The `C` class inherits methods from both `A` and `B`. In the example, `obj` of class `C` can call both `method_a` from `A` and `method_b` from `B`.</p>
+
+    <h4>Multilevel Inheritance</h4>
+    <pre>
+        <code>
+class Grandparent:
+    pass
+
+class Parent(Grandparent):
+    pass
+
+class Child(Parent):
+    pass
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> In multilevel inheritance, a class (`Child`) inherits from another class (`Parent`), which in turn inherits from another class (`Grandparent`). This creates a hierarchy where `Child` inherits from `Parent`, and `Parent` inherits from `Grandparent`.</p>
+
+    <h4>Hierarchical Inheritance</h4>
+    <pre>
+        <code>
+class Parent:
+    pass
+
+class Child1(Parent):
+    pass
+
+class Child2(Parent):
+    pass
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> In hierarchical inheritance, multiple classes (`Child1` and `Child2`) inherit from a single parent class (`Parent`). Both `Child1` and `Child2` have access to the attributes and methods of `Parent`.</p>
+
+    <h4>Hybrid Inheritance</h4>
+    <pre>
+        <code>
+class A:
+    pass
+
+class B:
+    pass
+
+class C(A, B):
+    pass
+
+class D(C):
+    pass
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> Hybrid inheritance is a combination of two or more types of inheritance. In this example, `D` inherits from `C`, which inherits from both `A` and `B`. This creates a complex hierarchy combining multiple inheritance styles.</p>
+
+    <h3>Method Resolution Order (MRO)</h3>
+    <p>Method Resolution Order (MRO) is a mechanism in Python that determines the order in which base classes are looked up when searching for a method. It is essential for understanding how Python resolves method calls in complex class hierarchies. MRO ensures that the correct method is called when multiple inheritance is involved.</p>
+
+    <h4>Beginner Level: Basic MRO Example</h4>
+    <p>To understand MRO, start with a simple class hierarchy where methods are overridden:</p>
+    <pre>
+        <code>
+class A:
+    def greet(self):
+        print("Hello from A")
+
+class B(A):
+    def greet(self):
+        print("Hello from B")
+
+class C(A):
+    def greet(self):
+        print("Hello from C")
+
+class D(B, C):
+    pass
+
+obj = D()
+obj.greet()  # Output: Hello from B
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> In this example, `D` inherits from both `B` and `C`, which both inherit from `A`. Python uses the MRO to determine the order in which methods are looked up. The MRO for class `D` is `D -> B -> C -> A`. Therefore, when `greet` is called on an instance of `D`, Python will use the method from `B`, as `B` appears first in the MRO.</p>
+
+    <h4>Intermediate Level: Understanding MRO with Method Resolution</h4>
+    <p>Let's see how MRO resolves methods in a more complex hierarchy and examine the order of method resolution:</p>
+    <pre>
+        <code>
+class A:
+    def greet(self):
+        print("Hello from A")
+
+class B(A):
+    def greet(self):
+        print("Hello from B")
+
+class C(A):
+    def greet(self):
+        print("Hello from C")
+
+class D(B, C):
+    def greet(self):
+        print("Hello from D")
+
+obj = D()
+obj.greet()  # Output: Hello from D
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> Here, `D` overrides the `greet` method. The MRO for `D` is `D -> B -> C -> A`. When `greet` is called, the method from `D` is used, as it is the most specific method in the hierarchy. This demonstrates that the most derived class method is used if it overrides the base class methods.</p>
+
+    <h4>Advanced Level: MRO and Complex Hierarchies</h4>
+    <p>For complex hierarchies, use the `__mro__` attribute or the `mro()` method to inspect the MRO:</p>
+    <pre>
+        <code>
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+
+print(D.__mro__)  # Output: (<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    <p><strong>Explanation:</strong> The `__mro__` attribute shows the method resolution order for class `D`. It lists the classes in the order Python will search for methods, from most derived to least derived, ending with the base `object` class. This helps understand how Python resolves method calls in intricate inheritance scenarios.</p>
+
+</div>
+
+<div class="d-flex justify-content-between">
+    <div class="mt-4">
+        <a href="{% url 'python_class' %}" class="btn btn-primary">Previous Page: Class</a>
+    </div>
+    <div class="mt-4">
+        <a href="{% url 'python_polymorphism' %}" class="btn btn-primary">Next Page: Polymorphism</a>
+    </div>
+</div>
+{% endblock %}

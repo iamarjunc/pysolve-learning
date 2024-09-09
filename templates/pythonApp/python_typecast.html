@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Type Casting
+{% endblock %}
+
+{% block content %}
+        <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+            <h1 class="display-4 text-primary">Python Type Casting</h1>
+            <p class="lead">Type casting in Python refers to the process of converting the value of one data type to another. This is useful when you need to ensure that your data is in the correct type for processing.</p>
+        </div>
+        <div class="mt-4">
+            <h3>Common Type Conversions</h3>
+            <p>Python provides several built-in functions to perform type conversions. Here are some common ones:</p>
+            
+            <h4>1. Convert to String</h4>
+            <p>Use the <code>str()</code> function to convert other data types to a string.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="str-convert-code">text = str(123)  # Converts integer 123 to string '123'</code>
+            </pre>
+
+            <h4>2. Convert to Integer</h4>
+            <p>Use the <code>int()</code> function to convert other data types to an integer.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="int-convert-code">age = int('45')  # Converts string '45' to integer 45</code>
+            </pre>
+
+            <h4>3. Convert to Float</h4>
+            <p>Use the <code>float()</code> function to convert other data types to a float.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="float-convert-code">price = float('19.99')  # Converts string '19.99' to float 19.99</code>
+            </pre>
+
+            <h4>4. Convert to Boolean</h4>
+            <p>Use the <code>bool()</code> function to convert other data types to a boolean.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="bool-convert-code">flag = bool(0)  # Converts integer 0 to boolean False</code>
+            </pre>
+
+            <h4>5. Convert to List</h4>
+            <p>Use the <code>list()</code> function to convert other data types to a list.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="list-convert-code">items = list('abc')  # Converts string 'abc' to list ['a', 'b', 'c']</code>
+            </pre>
+
+            <h4>6. Convert to Dictionary</h4>
+            <p>Dictionaries can be created from key-value pairs.</p>
+            <pre class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code id="dict-convert-code">person = dict(name='Alice', age=25)  # Creates a dictionary with keys 'name' and 'age'</code>
+            </pre>
+        </div>
+        
+        <div class="d-flex justify-content-between">
+            <div class="mt-4">
+                <a href="{% url 'python_dtypes' %}" class="btn btn-primary">Previous Page: Datatypes</a>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'python_strings' %}" class="btn btn-primary">Next Page: Strings</a>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% block sidebar %}
+
+    <h4>Important Topics</h4>
+    <div class="box {% if active_page == 'introduction' %}active{% endif %}" {% if active_page == 'introduction' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_intro' %}">Introduction</a>
+    </div>
+    <div class="box {% if active_page == 'variables' %}active{% endif %}" {% if active_page == 'variables' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_var' %}">Variables</a>
+    </div>
+    <div class="box {% if active_page == 'datatypes' %}active{% endif %}" {% if active_page == 'datatypes' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_dtypes' %}">Datatypes</a>
+    </div>
+    <div class="box {% if active_page == 'typecasting' %}active{% endif %}" {% if active_page == 'typecasting' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_typecast' %}">Typecasting</a>
+    </div>
+    <div class="box {% if active_page == 'strings' %}active{% endif %}" {% if active_page == 'strings' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_strings' %}">Strings</a>
+    </div>
+    <div class="box {% if active_page == 'boolean' %}active{% endif %}" {% if active_page == 'boolean' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_boolean' %}">Boolean</a>
+    </div>
+    <div class="box {% if active_page == 'operators' %}active{% endif %}" {% if active_page == 'operators' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_operators' %}">Operators</a>
+    </div>
+    <div class="box {% if active_page == 'condstate' %}active{% endif %}" {% if active_page == 'condstate' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_condstate' %}">Conditional Statement</a>
+    </div>
+    <div class="box {% if active_page == 'loops' %}active{% endif %}" {% if active_page == 'loops' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_loops' %}">Loops</a>
+    </div>
+    <div class="box {% if active_page == 'list' %}active{% endif %}" {% if active_page == 'list' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_list' %}">List</a>
+    </div>
+    <div class="box {% if active_page == 'tuple' %}active{% endif %}" {% if active_page == 'tuple' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_tuples' %}">Tuple</a>
+    </div>
+    <div class="box {% if active_page == 'set' %}active{% endif %}" {% if active_page == 'set' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_set' %}">Set</a>
+    </div>
+    <div class="box {% if active_page == 'dict' %}active{% endif %}" {% if active_page == 'dict' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_dict' %}">Dictionary</a>
+    </div>
+    <div class="box {% if active_page == 'function' %}active{% endif %}" {% if active_page == 'function' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_function' %}">Functions</a>
+    </div>
+    <div class="box {% if active_page == 'class' %}active{% endif %}" {% if active_page == 'class' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_class' %}">Class</a>
+    </div>
+    <div class="box {% if active_page == 'inheritance' %}active{% endif %}" {% if active_page == 'inheritance' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_inheritance' %}">Inheritance</a>
+    </div>
+    <div class="box {% if active_page == 'polymorphism' %}active{% endif %}" {% if active_page == 'polymorphism' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_polymorphism' %}">Polymorphism</a>
+    </div>
+    <div class="box {% if active_page == 'scope' %}active{% endif %}" {% if active_page == 'scope' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_scope' %}">Scope</a>
+    </div>
+    <div class="box {% if active_page == 'modules' %}active{% endif %}" {% if active_page == 'modules' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_modules' %}">Modules</a>
+    </div>
+    <div class="box {% if active_page == 'exception' %}active{% endif %}" {% if active_page == 'exception' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_exception' %}">Exception</a>
+    </div>
+    <div class="box {% if active_page == 'filehandling' %}active{% endif %}" {% if active_page == 'filehandling' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_filehandling' %}">File Handling</a>
+    </div>
+    <div class="box {% if active_page == 'json' %}active{% endif %}" {% if active_page == 'json' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_json_handling' %}">Json</a>
+    </div>
+    <div class="box {% if active_page == 'regex' %}active{% endif %}" {% if active_page == 'regex' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_regex_handling' %}">Regular Expressions</a>
+    </div>
+    <div class="box {% if active_page == 'generators' %}active{% endif %}" {% if active_page == 'generators' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_generators' %}">Generators</a>
+    </div>
+    <div class="box {% if active_page == 'decorators' %}active{% endif %}" {% if active_page == 'decorators' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_decorators' %}">Decorators</a>
+    </div>
+    <div class="box {% if active_page == 'lambdafnct' %}active{% endif %}" {% if active_page == 'lambdafnct' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_lambdafnct' %}">Lambda Functions</a>
+    </div>
+    <div class="box {% if active_page == 'iterators' %}active{% endif %}" {% if active_page == 'iterators' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_iterators' %}">Iterators</a>
+    </div>
+    <div class="box {% if active_page == 'contextmanager' %}active{% endif %}" {% if active_page == 'contextmanager' %}id="active-item"{% endif %}>
+        <a href="{% url 'python_contextmanager' %}">Context Manager</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var activeItem = document.getElementById("active-item");
+            if (activeItem) {
+                activeItem.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+    </script>
+        
+{% endblock %}
+
+

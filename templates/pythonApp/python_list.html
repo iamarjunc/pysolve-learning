@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Lists
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Python Lists</h1>
+        <p class="lead">Lists are ordered collections of items in Python, which are mutable and can hold different data types.</p>
+    </div>
+    <div class="mt-4">
+        <h3>Creating a List</h3>
+        <p>Lists are created using square brackets.</p>
+        <pre class="code-block"><code id="create-list-code">fruits = ["apple", "banana", "cherry"]</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Accessing List Items</h3>
+        <p>List items are accessed by their index, starting from 0.</p>
+        <pre class="code-block"><code id="access-list-item-code">print(fruits[0])  # Output: apple</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Modifying List Items</h3>
+        <p>You can modify items in a list by assigning a new value to a specific index.</p>
+        <pre class="code-block"><code id="modify-list-item-code">fruits[1] = "blueberry"
+print(fruits)  # Output: ['apple', 'blueberry', 'cherry']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Adding Items to a List</h3>
+        <p>Use the <code>append()</code> method to add an item to the end of a list.</p>
+        <pre class="code-block"><code id="append-list-code">fruits.append("orange")
+print(fruits)  # Output: ['apple', 'blueberry', 'cherry', 'orange']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Inserting Items into a List</h3>
+        <p>Use the <code>insert()</code> method to add an item at a specific position.</p>
+        <pre class="code-block"><code id="insert-list-code">fruits.insert(1, "kiwi")
+print(fruits)  # Output: ['apple', 'kiwi', 'blueberry', 'cherry', 'orange']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Removing Items from a List</h3>
+        <p>Use the <code>remove()</code> method to remove a specific item, or the <code>pop()</code> method to remove an item at a specific index.</p>
+        <pre class="code-block"><code id="remove-list-code">fruits.remove("kiwi")
+print(fruits)  # Output: ['apple', 'blueberry', 'cherry', 'orange']
+
+fruits.pop(2)
+print(fruits)  # Output: ['apple', 'blueberry', 'orange']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>List Slicing</h3>
+        <p>You can access a range of items in a list by using slicing.</p>
+        <pre class="code-block"><code id="slice-list-code">print(fruits[1:3])  # Output: ['blueberry', 'orange']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Looping Through a List</h3>
+        <p>You can loop through the items in a list using a <code>for</code> loop.</p>
+        <pre class="code-block"><code id="loop-list-code">for fruit in fruits:
+    print(fruit)</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Checking if an Item Exists in a List</h3>
+        <p>Use the <code>in</code> keyword to check if an item exists in a list.</p>
+        <pre class="code-block"><code id="check-list-item-code">if "apple" in fruits:
+    print("Apple is in the list!")</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>List Length</h3>
+        <p>Use the <code>len()</code> function to get the number of items in a list.</p>
+        <pre class="code-block"><code id="list-length-code">print(len(fruits))  # Output: 3</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Sorting a List</h3>
+        <p>Use the <code>sort()</code> method to sort a list in ascending order.</p>
+        <pre class="code-block"><code id="sort-list-code">fruits.sort()
+print(fruits)  # Output: ['apple', 'blueberry', 'orange']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Reversing a List</h3>
+        <p>Use the <code>reverse()</code> method to reverse the order of the list.</p>
+        <pre class="code-block"><code id="reverse-list-code">fruits.reverse()
+print(fruits)  # Output: ['orange', 'blueberry', 'apple']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+
+        <h3>Copying a List</h3>
+        <p>You can copy a list using the <code>copy()</code> method.</p>
+        <pre class="code-block"><code id="copy-list-code">new_fruits = fruits.copy()
+print(new_fruits)  # Output: ['orange', 'blueberry', 'apple']</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+    </div>
+    <br />
+    <div class="d-flex justify-content-between">
+        <div class="mt-4">
+            <a href="{% url 'python_loops' %}" class="btn btn-primary">Previous Page: Loop</a>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'python_tuples' %}" class="btn btn-primary">Next Page: Tuple</a>
+        </div>
+    </div>
+{% endblock %}

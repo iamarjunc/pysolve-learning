@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Booleans
+{% endblock %}
+
+{% block content %}
+        <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+
+        <h1 class="display-4 text-primary">Python Booleans</h1>
+        <p class="lead">Booleans represent one of two values: <code>True</code> or <code>False</code>. They are used in conditional statements and to evaluate expressions.</p>
+        </div>
+        <div class="mt-4">
+            <h3>Boolean Values</h3>
+            <pre class="code-block"><code class="language-python">is_active = True<br/>is_logged_in = False</code>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </pre>
+        </div>
+
+        <div class="mt-4">
+            <h3>Logical Operators</h3>
+            <p>Logical operators are used to combine conditional statements:</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>and:</strong> Returns <code>True</code> if both statements are true.
+                    <pre class="code-block"><code class="language-python">is_logged_in = True<br/>is_active = True<br/>print(is_logged_in and is_active)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>or:</strong> Returns <code>True</code> if one of the statements is true.
+                    <pre class="code-block"><code class="language-python">is_logged_in = True<br/>is_active = False<br/>print(is_logged_in or is_active)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>not:</strong> Reverses the result, returns <code>False</code> if the result is true.
+                    <pre class="code-block"><code class="language-python">is_logged_in = True<br/>print(not is_logged_in)  # Output: False</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h3>Comparison Operators</h3>
+            <p>Comparison operators compare two values and return a Boolean value:</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>== :</strong> Equal to
+                    <pre class="code-block"><code class="language-python">a = 10<br/>b = 10<br/>print(a == b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>!= :</strong> Not equal to
+                    <pre class="code-block"><code class="language-python">a = 10<br/>b = 20<br/>print(a != b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>&gt; :</strong> Greater than
+                    <pre class="code-block"><code class="language-python">a = 20<br/>b = 10<br/>print(a &gt; b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>&lt; :</strong> Less than
+                    <pre class="code-block"><code class="language-python">a = 5<br/>b = 10<br/>print(a &lt; b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>&gt;= :</strong> Greater than or equal to
+                    <pre class="code-block"><code class="language-python">a = 10<br/>b = 10<br/>print(a &gt;= b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>&lt;= :</strong> Less than or equal to
+                    <pre class="code-block"><code class="language-python">a = 10<br/>b = 20<br/>print(a &lt;= b)  # Output: True</code>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </pre>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h3>Boolean Conversion</h3>
+            <p>In Python, you can convert any value to a Boolean using the <code>bool()</code> function. The following values are considered <code>False</code>:</p>
+            <ul class="list-group">
+                <li class="list-group-item">Any numeric value equal to <code>0</code></li>
+                <li class="list-group-item">An empty string <code>""</code></li>
+                <li class="list-group-item">An empty list <code>[]</code>, tuple <code>()</code>, set <code>{}</code>, or dictionary <code>{}</code></li>
+                <li class="list-group-item">The <code>None</code> value</li>
+            </ul>
+            <pre class="code-block"><code class="language-python">print(bool(0))      # Output: False<br/>print(bool(""))     # Output: False<br/>print(bool([]))     # Output: False<br/>print(bool(None))   # Output: False</code>
+                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </pre>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="mt-4">
+                <a href="{% url 'python_strings' %}" class="btn btn-primary">Previous Page: Strings</a>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'python_operators' %}" class="btn btn-primary">Next Page: Operators</a>
+            </div>
+        </div>
+{% endblock %}

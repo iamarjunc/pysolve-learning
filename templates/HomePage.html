@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pysolve Tutorials</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'css/HomePage.css' %}"> -->
+<style>
+    .home-page {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    
+    .logo {
+        width: 150px;
+        height: auto;
+    }
+    
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+        text-align: center;
+    }
+    
+    .btn-primary, .btn-success, .btn-info, .btn-danger {
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .bg-light {
+        background-color: #ffffff !important;
+    }
+</style>
+</head>
+<body>
+
+    <div class="home-page">
+        <div class="jumbotron jumbotron-fluid bg-light p-4 rounded text-center">
+            <img src="{% static 'images/logo.png' %}" alt="Pysolve Logo" class="logo mb-3" />
+            <h1 class="display-4 text-primary">Welcome to Pysolve Tutorials</h1>
+            <p class="lead text-dark">Your ultimate destination for mastering Python, Django, Machine Learning, and Artificial Intelligence.</p>
+        </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Python</h5>
+                            <p class="card-text text-dark">Explore Python programming from the ground up. Build robust applications and scripts with ease.</p>
+                            <a href="{% url 'py_home' %}"
+                               class="btn btn-primary {% if request.path == '/introduction/' %}active{% endif %}">
+                               Explore Python</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">Django</h5>
+                            <p class="card-text text-dark">Dive into Django for powerful web development. Create scalable and dynamic web applications effortlessly.</p>
+                            <a href="#"
+                               class="btn btn-success {% if request.path == '/django-intro/' %}active{% endif %}">
+                               Explore Django</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card border-info">
+                        <div class="card-body">
+                            <h5 class="card-title text-info">Machine Learning</h5>
+                            <p class="card-text text-dark">Get hands-on with ML techniques and algorithms. Learn to build models and analyze complex data.</p>
+                            <a href="#" class="btn btn-info">Explore ML</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card border-danger">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">Artificial Intelligence</h5>
+                            <p class="card-text text-dark">Understand AI concepts and applications. Develop intelligent systems to solve sophisticated problems.</p>
+                            <a href="#" class="btn btn-danger">Explore AI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="{% url 'py_home' %}" class="btn btn-success btn-lg">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+ 
+    <!-- <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script> -->
+</body>
+</html>

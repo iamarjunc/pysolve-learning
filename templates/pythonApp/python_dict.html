@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Dictionaries
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Python Dictionaries</h1>
+        <p class="lead">Dictionaries are collections of key-value pairs in Python, which are unordered, mutable, and indexed.</p>
+    </div>
+    <div class="mt-4">
+        <h3>Creating a Dictionary</h3>
+        <p>Dictionaries are created using curly braces, with key-value pairs separated by colons.</p>
+        <pre class="code-block"><code id="create-dict-code">my_dict = {"name": "John", "age": 30, "city": "New York"}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Accessing Dictionary Items</h3>
+        <p>You can access the value associated with a specific key using square brackets.</p>
+        <pre class="code-block"><code id="access-dict-item-code">print(my_dict["name"])  # Output: John</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Modifying Dictionary Items</h3>
+        <p>You can modify the value associated with a specific key.</p>
+        <pre class="code-block"><code id="modify-dict-item-code">my_dict["age"] = 31
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'city': 'New York'}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Adding Items to a Dictionary</h3>
+        <p>Add a new key-value pair to a dictionary by assigning a value to a new key.</p>
+        <pre class="code-block"><code id="add-dict-item-code">my_dict["email"] = "john@example.com"
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'city': 'New York', 'email': 'john@example.com'}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Removing Items from a Dictionary</h3>
+        <p>Use the <code>pop()</code> method to remove a key-value pair, or the <code>del</code> statement to delete a specific key.</p>
+        <pre class="code-block"><code id="remove-dict-item-code">my_dict.pop("city")
+print(my_dict)  # Output: {'name': 'John', 'age': 31, 'email': 'john@example.com'}
+
+del my_dict["email"]
+print(my_dict)  # Output: {'name': 'John', 'age': 31}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Looping Through a Dictionary</h3>
+        <p>You can loop through the keys or key-value pairs in a dictionary using a <code>for</code> loop.</p>
+        <pre class="code-block"><code id="loop-dict-code">for key, value in my_dict.items():
+    print(key, value)</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Checking if a Key Exists in a Dictionary</h3>
+        <p>Use the <code>in</code> keyword to check if a key exists in a dictionary.</p>
+        <pre class="code-block"><code id="check-dict-key-code">if "name" in my_dict:
+    print("Name exists in the dictionary!")</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Dictionary Length</h3>
+        <p>Use the <code>len()</code> function to get the number of key-value pairs in a dictionary.</p>
+        <pre class="code-block"><code id="dict-length-code">print(len(my_dict))  # Output: 2</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Nesting Dictionaries</h3>
+        <p>You can nest dictionaries inside another dictionary.</p>
+        <pre class="code-block"><code id="nest-dict-code">my_family = {
+  "child1": {"name": "Emily", "age": 5},
+  "child2": {"name": "Jacob", "age": 7}
+}
+print(my_family)</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+
+        <h3>Copying a Dictionary</h3>
+        <p>You can copy a dictionary using the <code>copy()</code> method or the <code>dict()</code> constructor.</p>
+        <pre class="code-block"><code id="copy-dict-code">new_dict = my_dict.copy()
+print(new_dict)  # Output: {'name': 'John', 'age': 31}
+
+new_dict2 = dict(my_dict)
+print(new_dict2)  # Output: {'name': 'John', 'age': 31}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </div>
+
+    <br />
+    <div class="d-flex justify-content-between">
+        <div class="mt-4">
+            <a href="{% url 'python_set' %}" class="btn btn-primary">Previous Page: Sets</a>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'python_function' %}" class="btn btn-primary">Next Page: Functions</a>
+        </div>
+    </div>
+{% endblock %}

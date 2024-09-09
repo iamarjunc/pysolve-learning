@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+Python Variables
+{% endblock %}
+
+{% block content %}
+        <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+            <h1 class="display-4 text-primary">Python Variables</h1>
+            <p class="lead">Variables are used to store data that can be referenced and manipulated in a program. In Python, variables are dynamically typed and can hold different types of values.</p>
+        </div>
+
+        <div class="mt-4">
+            <h3>Defining Variables</h3>
+            <p>To define a variable in Python, simply assign a value to a variable name using the equals sign (<code>=</code>).</p>
+            <pre><code># Define a variable
+name = "Alice"
+age = 30
+height = 5.6</code>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+            </pre>
+        </div>
+
+        <div class="mt-4">
+            <h3>Variable Name Rules</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Variable names must start with a letter or an underscore (_).</li>
+                <li class="list-group-item">Variable names can contain letters, numbers, and underscores, but cannot start with a number.</li>
+                <li class="list-group-item">Variable names are case-sensitive (e.g., <code>age</code> and <code>Age</code> are different variables).</li>
+                <li class="list-group-item">Avoid using reserved keywords as variable names (e.g., <code>class</code>, <code>for</code>, <code>if</code>).</li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h3>Variable Types</h3>
+            <ul class="list-group">
+                <li class="list-group-item">String: Text data (e.g., <code>name = "Alice"</code>)
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </li>
+                <li class="list-group-item">Integer: Whole numbers (e.g., <code>age = 30</code>)
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </li>
+                <li class="list-group-item">Float: Decimal numbers (e.g., <code>height = 5.6</code>)
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h3>Important Variable Lessons</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Variable Reassignment:</strong> You can change the value of a variable by reassigning it. For example:
+                    <pre><code>age = 30
+age = 31</code>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>Dynamic Typing:</strong> In Python, variables are dynamically typed. This means you can assign different types of values to the same variable:
+                    <pre><code>value = "Hello"
+value = 100</code>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>Multiple Assignment:</strong> You can assign a single value to multiple variables at once:
+                    <pre><code>x = y = z = 10</code>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>Swapping Values:</strong> You can swap the values of two variables in a single line:
+                    <pre><code>a, b = b, a</code>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+                    </pre>
+                </li>
+                <li class="list-group-item">
+                    <strong>Global vs Local Variables:</strong> Variables defined inside a function are local to that function, while variables defined outside are global. Be careful with variable scope to avoid unintended side effects.
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h3>Define a Variable</h3>
+            <pre><code># Define a variable
+name = "John Doe"
+age = 25
+height = 5.9</code>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+            </pre>
+        </div>
+
+        <h3 class="mt-4">Variable Naming Conventions</h3>
+        <p>Follow these conventions when naming variables in Python:</p>
+        <ul>
+            <li>Variable names can contain letters, numbers, and underscores (<code>_</code>).</li>
+            <li>They must start with a letter or an underscore, not a number.</li>
+            <li>Variable names are case-sensitive.</li>
+        </ul>
+        <pre><code># Valid variable names
+first_name = "Alice"
+_last_name = "Smith"
+age2 = 30
+
+# Invalid variable names
+2nd_place = "Winner"  # Starts with a number</code>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+        </pre>
+
+        <div class="d-flex justify-content-between">
+            <div class="mt-4">
+                <a href="{% url 'python_intro' %}" class="btn btn-primary">Previous Page: Introduction</a>
+            </div>
+            <div class="mt-4">
+                <a href="{% url 'python_dtypes' %}" class="btn btn-primary">Next Page: Datatypes</a>
+            </div>
+        </div>
+{% endblock %}
