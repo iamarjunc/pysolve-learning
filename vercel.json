@@ -1,31 +1,49 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "pysolvePrj/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-      },
-      {
-        "src": "build_files.sh",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "staticfiles_build"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "pysolvePrj/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles_build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "staticfiles_build/static/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "pysolvePrj/wsgi.py"
-      },
-      {
-          "src": "/media/(.*)",
-          "dest": "/media/$1"
-      }
-    ]
-  }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "staticfiles_build/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "staticfiles_build/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "pysolvePrj/wsgi.py"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/css/(.*)",
+      "destination": "/static/css/$1"
+    },
+    {
+      "source": "/js/(.*)",
+      "destination": "/static/js/$1"
+    },
+    {
+      "source": "/images/(.*)",
+      "destination": "/static/images/$1"
+    },
+    {
+      "source": "/fonts/(.*)",
+      "destination": "/static/fonts/$1"
+    }
+  ]
+}
