@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}django Home{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Master django Programming</h1>
+        <p>Your journey to becoming a django expert starts here!</p>
+        <a href="{% url 'django_intro' %}" class="cta-button">Get Started</a>
+    </div>
+
+    <!-- Important Topics Section -->
+    <section class="important-topics">
+        <h2>Important django Topics</h2>
+        <div class="topics-container">
+            {% block sidebar %}
+            <div class="topic-box {% if active_page == 'introduction' %}active{% endif %}">
+                <a href="{% url 'django_intro' %}">Introduction</a>
+            </div>
+            <div class="topic-box {% if active_page == 'venv' %}active{% endif %}" {% if active_page == 'venv' %}id="active-item"{% endif %}>
+                <a href="{% url 'django_venv' %}">Virtual Environment</a>
+            </div>
+            <div class="topic-box {% if active_page == 'create' %}active{% endif %}" {% if active_page == 'create' %}id="active-item"{% endif %}>
+                <a href="{% url 'django_create' %}">Create Project</a>
+            </div>
+            <div class="topic-box {% if active_page == 'app' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+                <a href="{% url 'django_app' %}">Django App</a>
+            </div>
+            <div class="topic-box {% if active_page == 'djfiles' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+                <a href="{% url 'django_files' %}">Django Files</a>
+            </div>
+            <div class="topic-box {% if active_page == 'templates' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+                <a href="{% url 'django_templates' %}">Django Templates</a>
+            </div>
+            {% endblock %}
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section class="get-started">
+        <h2>Get Started with django</h2>
+        <p>If you're new to django, <a href="{% url 'django_intro' %}">click here</a> to get started with your first django program.</p>
+    </section>
+{% endblock %}

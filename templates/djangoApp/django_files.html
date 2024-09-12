@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Understanding Django Files and Features
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Understanding Django Files and Features</h1>
+        <p class="lead">
+            Django is a powerful web framework that organizes projects into a structure of files and directories. Each file has a specific purpose and plays a role in the development and management of your application. In this lesson, we will explore the main Django files and their features.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>1. Project Directory Structure</h3>
+        <p>When you start a new Django project, you'll see a directory structure like this:</p>
+        <pre><code>
+myproject/
+    manage.py
+    myproject/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+    myapp/
+        __init__.py
+        admin.py
+        apps.py
+        models.py
+        tests.py
+        views.py
+        migrations/
+            __init__.py
+    templates/
+    static/
+        css/
+        js/
+        images/
+        </code>
+       </pre>
+    </div>
+
+    <div class="mt-4">
+        <h3>2. manage.py</h3>
+        <p>The <code>manage.py</code> file is a command-line utility that lets you interact with your Django project. It’s used to run server commands, apply migrations, create app directories, and more.</p>
+        <pre><code>
+# Example commands
+python manage.py runserver       # Starts the development server
+python manage.py makemigrations  # Creates new migration files
+python manage.py migrate         # Applies migrations to the database
+python manage.py startapp myapp  # Creates a new app
+        </code></pre>
+    </div>
+
+    <div class="mt-4">
+        <h3>3. Project Directory</h3>
+        <p>The directory named after your project (e.g., <code>myproject/</code>) contains the settings and configuration files for your project:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>__init__.py</strong> - Marks the directory as a Python package.</li>
+            <li class="list-group-item"><strong>settings.py</strong> - Contains all the project settings, including database configuration, installed apps, and middleware.</li>
+            <li class="list-group-item"><strong>urls.py</strong> - The URL dispatcher that maps URLs to views. It defines the URL patterns for the project.</li>
+            <li class="list-group-item"><strong>wsgi.py</strong> - Provides an entry-point for WSGI servers to serve your project. It’s used in production to interface with web servers.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>4. Application Directory</h3>
+        <p>Each app in your project will have its own directory with several files:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>__init__.py</strong> - Marks the directory as a Python package.</li>
+            <li class="list-group-item"><strong>admin.py</strong> - Registers models with the Django admin site to provide an interface for managing them.</li>
+            <li class="list-group-item"><strong>apps.py</strong> - Contains the configuration for the app. It’s used for app-specific settings.</li>
+            <li class="list-group-item"><strong>models.py</strong> - Defines the data models for the app. Each model corresponds to a database table.</li>
+            <li class="list-group-item"><strong>tests.py</strong> - Contains test cases for your app’s functionality.</li>
+            <li class="list-group-item"><strong>views.py</strong> - Defines the logic that handles requests and returns responses. Views interact with models and render templates.</li>
+            <li class="list-group-item"><strong>migrations/</strong> - Contains migration files that track changes to the models and database schema.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>5. Templates Directory</h3>
+        <p>The <code>templates/</code> directory is where you store HTML files for rendering views. It can be used to organize templates for various apps:</p>
+        <pre><code>
+myproject/
+    templates/
+        appname/
+            item_list.html
+            base.html
+        </code>
+    </pre>
+        <p>Templates can be organized into subdirectories to manage different types of views and layouts.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>6. Static Directory</h3>
+        <p>The <code>static/</code> directory is used for static files such as CSS, JavaScript, and images. You can organize it into subdirectories for better management:</p>
+        <pre><code>
+myproject/
+    static/
+        css/
+            style.css
+        js/
+            script.js
+        images/
+            logo.png
+        </code>
+        </pre>
+        <p>Static files are served directly by Django and should be referenced in your templates.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>7. Configuration and Settings</h3>
+        <p>Here’s a brief overview of some key settings found in <code>settings.py</code>:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>DATABASES</strong> - Configures the database connection details.</li>
+            <li class="list-group-item"><strong>INSTALLED_APPS</strong> - Lists the applications that are enabled in the Django project.</li>
+            <li class="list-group-item"><strong>MIDDLEWARE</strong> - Lists the middleware components that process requests and responses.</li>
+            <li class="list-group-item"><strong>TEMPLATES</strong> - Configures the template engines and directories.</li>
+            <li class="list-group-item"><strong>STATIC_URL</strong> - Defines the base URL for serving static files.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>8. URL Configuration</h3>
+        <p>The <code>urls.py</code> file in both the project and app directories manages URL routing:</p>
+        <pre><code>
+# Project urls.py
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('appname/', include('appname.urls')),
+]
+
+# App urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+        </code>
+    </pre>
+        <p>Project-level <code>urls.py</code> includes app-level URLs, allowing for modular routing.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>9. Example Workflow: Using Django Files</h3>
+        <pre><code>
+# Start a new Django project
+django-admin startproject myproject
+
+# Create a new app
+python manage.py startapp myapp
+
+# Define a model in models.py
+# Create a migration and apply it
+python manage.py makemigrations
+python manage.py migrate
+
+# Register the model in admin.py
+# Create views in views.py
+# Define URLs in urls.py
+# Create templates and static files
+        </code>
+        </pre>
+    </div>
+
+    <div class="mt-4 text-right">
+        <a href="#" class="btn btn-primary">Next Lesson: Advanced Django Features</a>
+    </div>
+{% endblock %}

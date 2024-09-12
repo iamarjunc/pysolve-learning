@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}
+Introduction to Python Virtual Environments
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Python Virtual Environments</h1>
+        <p class="lead">
+            Virtual environments in Python are isolated environments where you can install and manage dependencies specific to a project. This ensures that different projects using different versions of packages or Python itself do not interfere with each other.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Why Use a Virtual Environment?</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Isolates project dependencies, ensuring that each project has its own set of libraries.</li>
+            <li class="list-group-item">Prevents version conflicts between different projects.</li>
+            <li class="list-group-item">Makes it easier to manage and maintain environments for different projects.</li>
+            <li class="list-group-item">Helps in deploying projects by packaging only the necessary dependencies.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>Creating a Virtual Environment</h3>
+        <p>To create a virtual environment in Python, follow these steps:</p>
+        <ol>
+            <li>Ensure you have Python installed. You can verify this by running <code>python --version</code> or <code>python3 --version</code>.</li>
+            <li>Install the virtual environment package if it's not already installed:
+                <pre><code>pip install virtualenv</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </pre>
+            </li>
+            <li>Create a virtual environment in your project directory:
+                <pre><code>virtualenv venv</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </pre>
+                This will create a directory named <code>venv</code> containing the environment.
+            </li>
+            <li>Activate the virtual environment:
+                <ul>
+                    <li>On Windows:
+                        <pre><code>venv\Scripts\activate</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </pre>
+                    </li>
+                    <li>On macOS/Linux:
+                        <pre><code>source venv/bin/activate</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </pre>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>After activation, you will see your command prompt or terminal is prefixed with <code>(venv)</code> to indicate that the virtual environment is active.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Installing Packages in a Virtual Environment</h3>
+        <p>Once your virtual environment is activated, you can install packages with <code>pip</code> as usual, and they will be installed only within the environment.</p>
+        <pre><code>pip install package_name</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>For example, to install Django in your virtual environment:</p>
+        <pre><code>pip install django</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+    </div>
+
+    <div class="mt-4">
+        <h3>Freezing Dependencies</h3>
+        <p>
+            When you want to share your project or deploy it, it's essential to have a list of all the installed packages and their versions. You can generate this list using:
+        </p>
+        <pre><code>pip freeze > requirements.txt</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This creates a <code>requirements.txt</code> file that lists all the dependencies of your project. Other developers can install the same dependencies by running:</p>
+        <pre><code>pip install -r requirements.txt</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+    </div>
+
+    <div class="mt-4">
+        <h3>Deactivating a Virtual Environment</h3>
+        <p>When you're done working in your virtual environment, you can deactivate it by simply running:</p>
+        <pre><code>deactivate</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This will return you to the system's global Python environment.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Deleting a Virtual Environment</h3>
+        <p>If you no longer need a virtual environment, you can delete it by simply removing the directory it was created in:</p>
+        <pre><code>rm -rf venv</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This will completely remove the virtual environment and all the installed packages.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Best Practices with Virtual Environments</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Always activate the virtual environment before installing any package to keep your global environment clean.</li>
+            <li class="list-group-item">Use <code>pip freeze</code> and a <code>requirements.txt</code> file to manage project dependencies.</li>
+            <li class="list-group-item">Keep your virtual environments lightweight by only installing necessary packages.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>Example Workflow with a Virtual Environment</h3>
+        <pre><code>
+# Step 1: Create a virtual environment
+virtualenv venv
+
+# Step 2: Activate the virtual environment
+source venv/bin/activate  # On macOS/Linux
+venv\Scripts\activate  # On Windows
+
+# Step 3: Install dependencies
+pip install django
+
+# Step 4: Freeze installed packages into requirements.txt
+pip freeze > requirements.txt
+
+# Step 5: Deactivate the virtual environment when done
+deactivate
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+
+    </pre>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <div class="mt-4">
+            <a href="{% url 'django_intro' %}" class="btn btn-primary">Previous Page: Introduction</a>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'django_create' %}" class="btn btn-primary">Next Page: Create Project</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Python Tutorials{% endblock %}</title>
+    
+    <title>{% block title %}My Site{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -361,13 +362,13 @@
                 <li class="nav-item {% if active_nav == 'python' %}active{% endif %}">
                     <a class="nav-link" href="{% url "py_home" %}">Python</a>
                 </li>
-                <li class="nav-item {% if section == 'django' %}active{% endif %}">
-                    <a class="nav-link" href="#">Django</a>
+                <li class="nav-item {% if active_nav == 'django' %}active{% endif %}">
+                    <a class="nav-link" href="{% url "dj_home" %}">Django</a>
                 </li>
-                <li class="nav-item {% if section == 'ml' %}active{% endif %}">
+                <li class="nav-item {% if active_nav == 'ml' %}active{% endif %}">
                     <a class="nav-link" href="#">Machine Learning</a>
                 </li>
-                <li class="nav-item {% if section == 'contact' %}active{% endif %}">
+                <li class="nav-item {% if active_nav == 'contact' %}active{% endif %}">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
@@ -375,8 +376,12 @@
     </nav>
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-    {% include 'sidebar_python.html' %}
+    <div class="sidebar" id="sidebar">    
+      {% if active_nav == 'python' %}
+        {% include 'sidebar_python.html' %}
+      {% elif active_nav == 'django' %}
+        {% include 'sidebar_django.html' %}
+      {% endif %}
     </div>
 
     <!-- Main Content -->

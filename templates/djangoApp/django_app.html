@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Creating a Django App: From Start to Models and Views
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Creating a Django App</h1>
+        <p class="lead">
+            In this lesson, we will guide you through the process of creating a Django app, adding it to your project, and creating basic models and views. A Django app is a component of your project that handles a specific piece of functionality.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 1: Create a New App</h3>
+        <p>To create a new app in your Django project, use the following command inside your project directory:</p>
+        <pre><code>python manage.py startapp appname</code>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This command will create a directory named <code>appname</code> with the following structure:</p>
+        <pre><code>
+appname/
+    __init__.py
+    admin.py
+    apps.py
+    models.py
+    tests.py
+    views.py
+        </code></pre>
+        <p>Each of these files has a specific purpose. For now, we will focus on <code>models.py</code> and <code>views.py</code> for handling database models and business logic.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 2: Register the App in the Project</h3>
+        <p>Once the app is created, you need to tell Django that this app is part of your project. Open your project's <code>settings.py</code> file, and add the app to the <code>INSTALLED_APPS</code> list:</p>
+        <pre><code>
+INSTALLED_APPS = [
+    # Other apps...
+    'appname',
+]
+        </code></pre>
+        <p>This ensures that Django recognizes and includes your app in the project.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 3: Creating a Model</h3>
+        <p>Models are Python classes that map to your database tables. They define the structure of your data and the relationships between different pieces of data. Let's create a simple model in <code>models.py</code>:</p>
+        <pre><code>
+from django.db import models
+
+class Item(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+        <p>Here, we've created a model for an <code>Item</code> with a name, description, and price. You can add more fields as needed.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 4: Applying Migrations</h3>
+        <p>Now that the model is defined, Django needs to apply it to the database. First, generate the migration file:</p>
+        <pre><code>python manage.py makemigrations appname</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This command creates a migration file that describes the changes to your database. Now, apply the migrations with the following command:</p>
+        <pre><code>python manage.py migrate</code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </pre>
+        <p>This applies the migration and creates the necessary database tables.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 5: Registering the Model in the Admin Interface</h3>
+        <p>To manage your new model through Django’s admin interface, you need to register it. Open <code>admin.py</code> and add the following code:</p>
+        <pre><code>
+from django.contrib import admin
+from .models import Item
+
+admin.site.register(Item)
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+        <p>Now, when you log in to the Django admin at <a href="http://127.0.0.1:8000/admin" target="_blank">http://127.0.0.1:8000/admin</a>, you will see your <code>Item</code> model listed, and you can add, edit, or delete items from there.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 6: Creating a View</h3>
+        <p>Now that your app has a model, let’s create a view to display items. Open <code>views.py</code> and define the following view:</p>
+        <pre><code>
+from django.shortcuts import render
+from .models import Item
+
+def item_list(request):
+    items = Item.objects.all()
+    return render(request, 'appname/item_list.html', {'items': items})
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+        <p>This view retrieves all items from the database and passes them to a template called <code>item_list.html</code>.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 7: Creating a Template</h3>
+        <p>Create a directory named <code>templates</code> inside your app directory, and within it, create another folder named <code>appname</code>. Inside this folder, create a file named <code>item_list.html</code> with the following content:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Item List&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Items&lt;/h1&gt;
+    &lt;ul&gt;
+        {% verbatim %}{% for item in items %}&lt;li&gt;{{ item.name }} - {{ item.price }} - {{ item.description }}&lt;/li&gt;{% endfor %}{% endverbatim %}&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+        <p>This template displays a list of items retrieved from the database.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 8: Adding a URL Pattern</h3>
+        <p>Now, let’s create a URL that points to the view we just created. Inside your app directory, create a new file called <code>urls.py</code> and add the following code:</p>
+        <pre><code>
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('items/', views.item_list, name='item_list'),
+]
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+        <p>Finally, include this <code>urls.py</code> file in your project’s main <code>urls.py</code> by adding the following line:</p>
+        <pre><code>
+from django.urls import include
+
+urlpatterns = [
+    path('appname/', include('appname.urls')),
+]
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+        <p>Now, when you visit <a href="http://127.0.0.1:8000/appname/items/" target="_blank">http://127.0.0.1:8000/appname/items/</a>, you will see the list of items from your database!</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Best Practices for Django Apps</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Keep your apps modular by focusing each app on a specific piece of functionality.</li>
+            <li class="list-group-item">Register models in the admin interface for easy data management.</li>
+            <li class="list-group-item">Use views to handle business logic and templates to handle the presentation of data.</li>
+            <li class="list-group-item">Organize your URL patterns by including each app’s URLs in the main project URL configuration.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>Example Workflow: Creating a Django App</h3>
+        <pre><code>
+# Step 1: Create a new app
+python manage.py startapp appname
+
+# Step 2: Register the app in settings.py
+# Add 'appname' to INSTALLED_APPS
+
+# Step 3: Create a model in models.py
+# Define your model fields
+
+# Step 4: Apply migrations
+python manage.py makemigrations appname
+python manage.py migrate
+
+# Step 5: Register the model in admin.py
+# Use admin.site.register()
+
+# Step 6: Create a view in views.py
+# Retrieve data from the database and pass it to a template
+
+# Step 7: Create a template in templates/appname/item_list.html
+# Display the data
+
+# Step 8: Define a URL pattern in urls.py
+# Map a URL to your view function
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <div class="mt-4">
+            <a href="{% url 'django_create' %}" class="btn btn-primary">Previous Page: Create Project</a>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'django_app' %}" class="btn btn-primary">Next Page: Django Files</a>
+        </div>
+    </div>
+{% endblock %}

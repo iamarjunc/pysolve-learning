@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}
+Understanding Django Templates: Basics and Advanced Features
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Understanding Django Templates</h1>
+        <p class="lead">
+            In this lesson, we will explore how Django templates work. Django templates are a powerful tool for rendering HTML content dynamically, allowing you to build dynamic web pages with Python variables, control structures, and more.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 1: Introduction to Django Templates</h3>
+        <p>Django templates allow you to separate your HTML from your Python code. Templates use a simple syntax to embed dynamic content into HTML files. Let’s start by creating a basic template.</p>
+
+        {% verbatim %}
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;{% block title %}My Site{% endblock %}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;My Header&lt;/header&gt;
+    {% block content %}{% endblock %}
+    &lt;footer&gt;My Footer&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        {% endverbatim %}
+        
+        <p>In this template, <code>{{ name }}</code> is a placeholder for dynamic content that will be replaced by the value passed from the view.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 2: Creating a View to Render the Template</h3>
+        <p>To render this template, you need to create a view in Django. Here’s how you can define a view that passes data to the template:</p>
+        <pre><code>
+from django.shortcuts import render
+
+def hello_view(request):
+    context = {'name': 'World'}
+    return render(request, 'hello.html', context)
+        </code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This view creates a dictionary <code>context</code> with a key <code>name</code> and passes it to the <code>hello.html</code> template.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 3: Creating the URL Pattern</h3>
+        <p>Next, you need to map a URL to this view. Add the following URL pattern to your app’s <code>urls.py</code>:</p>
+        <pre><code>from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('hello/', views.hello_view, name='hello'),
+]</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>Now, when you navigate to <a href="http://127.0.0.1:8000/hello/" target="_blank">http://127.0.0.1:8000/hello/</a>, you will see the rendered template with the name "World".</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 4: Using Template Tags and Filters</h3>
+        <p>Django templates support a variety of template tags and filters to manipulate and format data. For example:</p>
+        <pre><code>{% verbatim %}{{ name|upper }}{% endverbatim %}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This will convert the <code>name</code> to uppercase. You can also use control structures like loops and conditionals:</p>
+        <pre><code>{% verbatim %}{% if name %}
+    &lt;h1&gt;Hello, {{ name }}!&lt;/h1&gt;
+{% else %}
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+{% endif %}
+{% endverbatim %}</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+            
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 5: Template Inheritance</h3>
+        <p>Django templates support inheritance, allowing you to create a base template and extend it. Here’s an example of a base template:</p>
+        {% verbatim %}<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;{% block title %}My Site{% endblock %}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;My Header&lt;/header&gt;
+    {% block content %}{% endblock %}
+    &lt;footer&gt;My Footer&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>{% endverbatim %}
+
+        <p>To extend this base template, create a child template:</p>
+        {% verbatim %}
+        <pre><code>
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    &lt;h1&gt;Welcome to the Home Page!&lt;/h1&gt;
+{% endblock %}
+        </code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        {% endverbatim %}
+        <p>This will insert the content of the child template into the corresponding blocks of the base template.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Best Practices for Django Templates</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Keep your templates organized and avoid excessive logic in templates.</li>
+            <li class="list-group-item">Use template inheritance to maintain a consistent layout across pages.</li>
+            <li class="list-group-item">Leverage template tags and filters to format and manipulate data effectively.</li>
+            <li class="list-group-item">Ensure templates are responsive and adhere to best practices for HTML and CSS.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>Example Workflow: Working with Django Templates</h3>
+        <pre><code>
+# Step 1: Create a new template
+# Define HTML with placeholders for dynamic content
+
+# Step 2: Create a view
+# Pass data to the template using the render() function
+
+# Step 3: Define a URL pattern
+# Map a URL to the view function
+
+# Step 4: Use template tags and filters
+# Manipulate and format data in the template
+
+# Step 5: Implement template inheritance
+# Extend a base template and override blocks as needed</code><button class="copy-btn" onclick="copyCode(this)">Copy</button>
+    </pre>
+    </div>
+
+    <div class="mt-4 text-right">
+        <a href="#" class="btn btn-primary">Next Lesson: Django Forms</a>
+    </div>
+{% endblock %}

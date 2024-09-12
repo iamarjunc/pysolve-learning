@@ -67,7 +67,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-success">Django</h5>
                             <p class="card-text text-dark">Dive into Django for powerful web development. Create scalable and dynamic web applications effortlessly.</p>
-                            <a href="#"
+                            <a href="{% url "dj_home" %}"
                                class="btn btn-success {% if request.path == '/django-intro/' %}active{% endif %}">
                                Explore Django</a>
                         </div>

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}
+Introduction to Django
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Introduction to Django</h1>
+        <p class="lead">
+            Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Why Django?</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Fast and simple to get started</li>
+            <li class="list-group-item">Secure by default</li>
+            <li class="list-group-item">Scalable and flexible</li>
+            <li class="list-group-item">Comes with a powerful admin interface</li>
+            <li class="list-group-item">Built-in ORM (Object Relational Mapping) for database management</li>
+            <li class="list-group-item">Highly customizable templating system</li>
+            <li class="list-group-item">Supports RESTful APIs and integrates well with third-party libraries</li>
+        </ul>
+    </div><br/>
+
+    <div class="mt-4">
+        <h3>Django’s Peculiarities and Features</h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>MVC (Model-View-Controller) Architecture:</strong> Django follows the "MTV" pattern, which stands for Model-Template-View, a variant of MVC. Models define the database structure, Templates define how data is presented to users, and Views handle business logic.
+            </li>
+            <li class="list-group-item">
+                <strong>DRY (Don't Repeat Yourself) Principle:</strong> Django encourages clean and reusable code through its "DRY" philosophy. Common functionality is abstracted into reusable modules, and a single change in one place propagates throughout the project.
+            </li>
+            <li class="list-group-item">
+                <strong>Middleware Support:</strong> Django allows the insertion of hooks into its request/response processing cycle through middleware, which can be used for session handling, security, and other tasks.
+            </li>
+            <li class="list-group-item">
+                <strong>ORM (Object-Relational Mapping):</strong> Django's ORM allows developers to interact with the database using Python code, abstracting SQL queries while still allowing for manual query execution when needed.
+            </li>
+            <li class="list-group-item">
+                <strong>Admin Interface:</strong> One of Django’s most powerful features is the automatic generation of an admin interface for managing application data, based on models. It supports robust customization options.
+            </li>
+            <li class="list-group-item">
+                <strong>Forms and Validation:</strong> Django’s form handling is highly secure, automatically escaping inputs to protect against Cross-Site Scripting (XSS) attacks and Cross-Site Request Forgery (CSRF).
+            </li>
+        </ul>
+    </div><br/>
+
+    <div class="mt-4">
+        <h3>Advantages of Using Django</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Django is highly secure, following security best practices like preventing SQL injection, XSS, and clickjacking by default.</li>
+            <li class="list-group-item">Its batteries-included philosophy means Django comes with a variety of built-in features (ORM, authentication, routing, etc.) that reduce the need for external dependencies.</li>
+            <li class="list-group-item">It is fast and efficient, ideal for both rapid development and high-traffic web applications.</li>
+            <li class="list-group-item">The Django community is large and supportive, with extensive documentation, libraries, and tutorials.</li>
+        </ul>
+    </div><br/>
+
+    <div class="mt-4">
+        <h3>Django Architecture Overview</h3>
+        <p>
+            Django’s architecture revolves around the following core components:
+        </p>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Models:</strong> Represent the structure of your database, defining the schema and business logic. Each model class maps to a database table.
+            </li>
+            <li class="list-group-item">
+                <strong>Views:</strong> Handle business logic and interact with models to fetch or modify data. They process user requests and send appropriate responses.
+            </li>
+            <li class="list-group-item">
+                <strong>Templates:</strong> Define the layout and structure of the data presented to the user. Django’s templating language allows for logic, loops, and data binding within HTML.
+            </li>
+            <li class="list-group-item">
+                <strong>URL Routing:</strong> Django uses a URL dispatcher to map URLs to views. The `urls.py` file defines all the routes and directs requests accordingly.
+            </li>
+            <li class="list-group-item">
+                <strong>Middleware:</strong> A framework for globally altering the input or output of Django’s request-response cycle.
+            </li>
+        </ul>
+    </div><br/>
+
+    <div class="mt-4">
+        <h3>Example: Simple Django View</h3>
+        <p>Below is an example of a simple Django view that returns an HTML response.</p>
+        <pre><code>
+from django.http import HttpResponse
+
+def hello_world(request):
+    return HttpResponse("Hello, World!")
+        </code>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>    
+    </pre>
+    </div><br/>
+
+    <div class="mt-4">
+        <h2>Setting Up Your Environment</h2>
+        <br>
+        <h4>Installing Django:</h4>
+        <ul>
+            <li>Install Django using <code>pip install django</code>.</li>
+            <li>Set up a Django project with <code>django-admin startproject projectname</code>.</li>
+        </ul>
+        <h4>Running Django:</h4>
+        <ul>
+            <li>Use <code>python manage.py runserver</code> to run the development server.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4 text-right">
+        <a href="{% url "django_venv" %}" class="btn btn-primary">Next Page: Create Virtual Environment</a>
+    </div>
+{% endblock %}

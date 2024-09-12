@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\CodeTest\django\Pysolve\pysolveEnv"
+VIRTUAL_ENV="D:\Arjun C\vortex\pysolve\pysolve-learning\pysolveEnv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

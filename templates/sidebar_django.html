@@ -1,0 +1,33 @@
+{% block sidebar %}
+
+    <h4>Important Topics</h4>
+    <div class="box {% if active_page == 'introduction' %}active{% endif %}" {% if active_page == 'introduction' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_intro' %}">Introduction</a>
+    </div>
+    <div class="box {% if active_page == 'venv' %}active{% endif %}" {% if active_page == 'venv' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_venv' %}">Virtual Environment</a>
+    </div>
+    <div class="box {% if active_page == 'create' %}active{% endif %}" {% if active_page == 'create' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_create' %}">Create Project</a>
+    </div>
+    <div class="box {% if active_page == 'app' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_app' %}">Django App</a>
+    </div>
+    <div class="box {% if active_page == 'djfiles' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_files' %}">Django Files</a>
+    </div>
+    <div class="box {% if active_page == 'templates' %}active{% endif %}" {% if active_page == 'app' %}id="active-item"{% endif %}>
+        <a href="{% url 'django_templates' %}">Django Templates</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var activeItem = document.getElementById("active-item");
+            if (activeItem) {
+                activeItem.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        });
+    </script>
+        
+{% endblock %}
+
+

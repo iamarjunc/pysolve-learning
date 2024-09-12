@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}
+Creating a Django Project: From Virtual Environment to Running the Server
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-light p-4 rounded">
+        <h1 class="display-4 text-primary">Creating a Django Project</h1>
+        <p class="lead">
+            In this lesson, we will walk through the process of setting up a new Django project from scratch. You’ll learn how to create a virtual environment, install Django, set up your project, and finally run the development server.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 1: Setting Up a Virtual Environment</h3>
+        <p>Before starting a Django project, it's best practice to create a virtual environment to manage dependencies. Follow these steps:</p>
+        <ol>
+            <li>Install <code>virtualenv</code> if you haven't already:
+                <pre><code>pip install virtualenv</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+            </li>
+            <li>Create a virtual environment for your project:
+                <pre><code>virtualenv venv</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+                This will create a new directory named <code>venv</code> where your environment will be stored.
+            </li>
+            <li>Activate the virtual environment:
+                <ul>
+                    <li>On Windows:
+                        <pre><code>venv\Scripts\activate</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+                    </li>
+                    <li>On macOS/Linux:
+                        <pre><code>source venv/bin/activate</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>Once activated, your command prompt will display <code>(venv)</code> to indicate the virtual environment is active.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 2: Installing Django</h3>
+        <p>Now that the virtual environment is active, install Django:</p>
+        <pre><code>pip install django</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>After the installation, you can verify that Django is installed by running:</p>
+        <pre><code>django-admin --version</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This will print the version of Django you have installed.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 3: Starting a New Django Project</h3>
+        <p>Once Django is installed, you can create a new Django project. Run the following command:</p>
+        <pre><code>django-admin startproject projectname</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This will create a new directory named <code>projectname</code> with the following structure:</p>
+        <pre><code>
+projectname/
+    manage.py
+    projectname/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+        </code></pre>
+        <p>
+            The inner <code>projectname</code> directory contains the core configuration files for your project. <code>manage.py</code> is a command-line utility that lets you interact with your project.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 4: Running the Django Development Server</h3>
+        <p>To check that everything is set up correctly, navigate into your project directory and run the development server:</p>
+        <pre><code>cd projectname</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <pre><code>python manage.py runserver</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>
+            This starts the built-in Django development server, and you should see output similar to this:
+        </p>
+        <pre><code>
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 11, 2024 - 16:12:34
+Django version 4.2, using settings 'projectname.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+        </code></pre>
+        </div>
+
+    <div class="mt-4">
+        <h3>Step 5: Creating an App in Django</h3>
+        <p>In Django, an app is a component of your project. To create an app, run the following command:</p>
+        <pre><code>python manage.py startapp appname</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This will create a new directory named <code>appname</code> with files like <code>models.py</code>, <code>views.py</code>, and more, where you define the functionality for the app.</p>
+        <p>Don't forget to add your new app to the <code>INSTALLED_APPS</code> section of <code>settings.py</code>:</p>
+        <pre><code>
+INSTALLED_APPS = [
+    # other apps...
+    'appname',
+]
+        </code></pre>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 6: Managing the Database</h3>
+        <p>Django comes with an integrated ORM that makes database management simple. After creating models in your app, run the following commands to create and apply database migrations:</p>
+        <pre><code>python manage.py makemigrations</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <pre><code>python manage.py migrate</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>This sets up your database tables according to the models defined in your app.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 7: Creating a Superuser for the Admin Interface</h3>
+        <p>Django has a built-in admin interface. To create a superuser who can access this interface, run:</p>
+        <pre><code>python manage.py createsuperuser</code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+        <p>Follow the prompts to set up the superuser. After that, you can log in at <a href="http://127.0.0.1:8000/admin" target="_blank">http://127.0.0.1:8000/admin</a>.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Step 8: Stopping the Server</h3>
+        <p>When you want to stop the development server, go back to the terminal where it's running and press <code>CTRL+C</code>. This will stop the server and free the port.</p>
+    </div>
+
+    <div class="mt-4">
+        <h3>Best Practices for Setting Up a Django Project</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Always use a virtual environment to manage project dependencies.</li>
+            <li class="list-group-item">Use <code>requirements.txt</code> to list your project dependencies (<code>pip freeze > requirements.txt</code>).</li>
+            <li class="list-group-item">Organize your project into multiple apps for modular development.</li>
+            <li class="list-group-item">Regularly run <code>makemigrations</code> and <code>migrate</code> to keep the database schema up to date.</li>
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h3>Example Workflow: Setting Up a Django Project</h3>
+        <pre><code>
+# Step 1: Create a virtual environment
+virtualenv venv
+
+# Step 2: Activate the virtual environment
+source venv/bin/activate  # On macOS/Linux
+venv\Scripts\activate  # On Windows
+
+# Step 3: Install Django
+pip install django
+
+# Step 4: Start a new Django project
+django-admin startproject myproject
+
+# Step 5: Navigate to the project directory
+cd myproject
+
+# Step 6: Run the development server
+python manage.py runserver
+        </code><button class="copy-btn" onclick="copyCode(this)">Copy</button></pre>
+    </div>
+
+
+    <div class="d-flex justify-content-between">
+        <div class="mt-4">
+            <a href="{% url 'django_venv' %}" class="btn btn-primary">Previous Page: Virtual Environment</a>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'django_app' %}" class="btn btn-primary">Next Page: Django App</a>
+        </div>
+    </div>
+{% endblock %}
